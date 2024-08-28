@@ -15,6 +15,9 @@ export default function FAQ() {
  //state for all questions
   const [expandAll, setExpandAll] = useState(false);
 
+  //filtered  faq data
+  const [filteredData, setFilteredData] = useState(questions)
+
   const toggle = (index) => {
     setExpandedInd((prev) =>
       prev.includes(index)
@@ -33,13 +36,22 @@ export default function FAQ() {
     setExpandedInd([]);
   };
 
+  const handleSearch = (q) => {
+    const searchText = q.toLowerCase();
+    const filtered = questions.filter(ele =>
+        ele.question.toLowerCase().includes(searchText) ||
+        ele.answer.toLowerCase().includes(searchText)
+      );
+      setFilteredData(filtered);
+
+  }
 
   return (
     <div className="max-w-xl mx-auto py-20 px-4">
       <h1 className="text-center uppercase tracking-widest font-bold mb-8">
        Frequently Asked Questions
         </h1>
-        <Search />
+        <Search query = {handleSearch}/>
         <div className="flex gap-4 mb-6">
         <button
           className="bg-blue-500 text-white px-4 py-2 rounded"
@@ -56,7 +68,7 @@ export default function FAQ() {
       </div>
 
       <div className="space-y-4">
-        {questions.map((item, index) => (
+        {filteredData.map((item, index) => (
           <div key={index} className="border-b border-gray-200">
             <div
               className="cursor-pointer p-4 flex justify-between items-center"
