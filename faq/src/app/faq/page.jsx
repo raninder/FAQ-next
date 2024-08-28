@@ -1,9 +1,7 @@
 'use client'
 
 import React, {useState} from 'react'
-import Image from 'next/image';
 import {questions} from '../testQuestions'
-import { FaAngleDown } from "react-icons/fa";
 import Search from '@/components/Search';
 
 
