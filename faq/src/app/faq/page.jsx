@@ -1,7 +1,10 @@
+'use client'
+
 import React, {useState} from 'react'
 import Image from 'next/image';
-import {questions} from '../app/testQuestions'
+import {questions} from '../testQuestions'
 import { FaAngleDown } from "react-icons/fa";
+import Search from '@/components/Search';
 
 
 
@@ -34,8 +37,9 @@ export default function FAQ() {
   return (
     <div className="max-w-xl mx-auto py-20 px-4">
       <h1 className="text-center uppercase tracking-widest font-bold mb-8">
-       FAQ
+       Frequently Asked Questions
         </h1>
+        <Search />
         <div className="flex gap-4 mb-6">
         <button
           className="bg-blue-500 text-white px-4 py-2 rounded"
